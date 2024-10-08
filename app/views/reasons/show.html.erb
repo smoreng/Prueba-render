@@ -1,0 +1,10 @@
+<p style="color: green"><%= notice %></p>
+
+<%= render @reason %>
+
+<div>
+  <%= link_to "Edit this reason", edit_reason_path(@reason) %> |
+  <%= link_to "Back to reasons", reasons_path %>
+
+  <%= button_to "Destroy this reason", @reason, method: :delete %>
+</div>

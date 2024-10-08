@@ -1,0 +1,33 @@
+<h1>Editando Llamado</h1>
+
+<%= form_with(model: [@client, @call]) do |form| %>
+  <% if @call.errors.any? %>
+    <div id="error_explanation" class="alert alert-danger">
+      <h2><%= pluralize(@call.errors.count, "error") %> impidieron que se guardara el llamado:</h2>
+      <ul>
+        <% @call.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="form-group">
+    <%= form.label :reason_id, "Motivo" %>
+    <%= form.collection_select :reason_id, @reasons, :id, :name, { prompt: "Selecciona un motivo" }, class: "form-control" %>
+  </div>
+
+  <div class="form-group">
+    <%= form.label :date, "Fecha" %>
+    <%= form.datetime_select :date, value: @call.date, class: "form-control" %>
+  </div>
+
+  <%= form.submit "Actualizar Llamado", class: "btn btn-primary" %>
+<% end %>
+
+<br>
+
+<div>
+  <%= link_to "Mostrar este llamado", [@client, @call], class: "btn btn-info" %> |
+  <%= link_to "Volver a los Llamados", client_calls_path(@client), class: "btn btn-secondary" %>
+</div>

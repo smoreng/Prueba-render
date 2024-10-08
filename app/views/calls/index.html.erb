@@ -1,0 +1,32 @@
+<h1>Llamados para <%= @client.name %></h1>
+
+<%= form_with url: client_calls_path(@client), method: :get, local: true, class: "form-inline mb-3" do %>
+  <div class="form-group">
+    <%= label_tag :search, "Buscar Motivo", class: "sr-only" %>
+    <%= text_field_tag :search, params[:search], class: "form-control mr-2", placeholder: "Buscar Motivo" %>
+    <%= submit_tag "Buscar", class: "btn btn-primary" %>
+  </div>
+<% end %>
+
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th>Motivo</th>
+      <th>Fecha</th>
+      <th colspan="2"></th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @calls.each do |call| %>
+      <tr>
+        <td><%= call.reason.name if call.reason %></td>
+        <td><%= call.date.strftime("%Y-%m-%d %H:%M") %></td>
+        <td><%= link_to 'Show', client_call_path(@client, call), class: "btn btn-info" %></td>
+        <td><%= link_to 'Edit', edit_client_call_path(@client, call), class: "btn btn-warning" %></td>
+        <td><%= link_to 'Destroy', client_call_path(@client, call), method: :delete, data: { confirm: '¿Estás seguro?' }, class: "btn btn-danger" %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<%= link_to 'Nuevo Llamado', new_client_call_path(@client), class: "btn btn-success" %>

@@ -1,0 +1,41 @@
+<h1>Clientes</h1>
+
+
+<table class="table">
+  <thead>
+    <tr>
+      <th>#</th>
+      <th>Número Telefónico</th>
+      <th>Nombre</th>
+      <th>Email</th>
+      <th>Acciones</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @clients.each_with_index do |client, index| %>
+      <tr>
+        <td><%= index + 1 %></td>
+        <td><%= client.phone_number %></td>
+        <td><%= client.name %></td>
+        <td><%= client.email %></td>
+        <td>
+          <div class="d-none d-md-flex">
+            <%= link_to 'Mostrar', client, class: 'btn btn-info me-1' %>
+            <%= link_to 'Editar', edit_client_path(client), class: 'btn btn-warning me-1' %>
+            <%= link_to 'Eliminar', client, method: :delete, data: { confirm: '¿Estás seguro?' }, class: 'btn btn-danger' %>
+          </div>
+          <div class="d-flex d-md-none btn-group-vertical btn-group-sm">
+            <%= link_to 'Mostrar', client, class: 'btn btn-info' %>
+            <%= link_to 'Editar', edit_client_path(client), class: 'btn btn-warning' %>
+            <%= link_to 'Eliminar', client, method: :delete, data: { confirm: '¿Estás seguro?' }, class: 'btn btn-danger' %>
+          </div>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+
+<%= will_paginate @clients %>
+
+<%= link_to 'Nuevo Cliente', new_client_path, class: 'btn btn-primary mb-3' %>

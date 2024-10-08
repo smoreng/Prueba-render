@@ -1,0 +1,14 @@
+<p style="color: green"><%= notice %></p>
+
+<h1>Reasons</h1>
+
+<div id="reasons">
+  <% @reasons.each do |reason| %>
+    <%= render reason %>
+    <p>
+      <%= link_to "Show this reason", reason %>
+    </p>
+  <% end %>
+</div>
+
+<%= link_to "New reason", new_reason_path %>
