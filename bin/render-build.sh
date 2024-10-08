@@ -10,4 +10,4 @@ bundle exec rails assets:clean
 # perform database migrations in the build command.
 # Uncomment the following line:
 
-bundle exec rails db:migrate db:seed
+bundle exec rails db:create db:migrate db:seed
