@@ -4,7 +4,8 @@ class ClientsController < ApplicationController
 
   # GET /clients or /clients.json
   def index
-    @clients = Client.paginate(page: params[:page], per_page: 10)
+    # @clients = Client.paginate(page: params[:page], per_page: 10)
+    @pagy, @clients = pagy(Client.all)
   end
 
   # GET /clients/1 or /clients/1.json

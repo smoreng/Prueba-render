@@ -35,7 +35,6 @@
   </tbody>
 </table>
 
-
-<%= will_paginate @clients %>
-
 <%= link_to 'Nuevo Cliente', new_client_path, class: 'btn btn-primary mb-3' %>
+
+<%== pagy_nav(@pagy) if @pagy.pages > 1 %>

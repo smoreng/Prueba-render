@@ -73,3 +73,5 @@ gem "devise", "~> 4.9"
 gem 'will_paginate'
 
 gem "faker", "~> 3.4"
+
+gem "pagy", "~> 9.1"
